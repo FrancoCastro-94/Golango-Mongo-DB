@@ -1,0 +1,31 @@
+{{ define "Index" }}
+  {{ template "Header" }}
+    {{ template "Menu"  }}
+    <div class="container">
+      <div class="row">
+      
+        <h2> Players </h2>
+        
+        {{ range . }}
+            
+            <div class="col-4">
+                <div class="card" style="width: 18rem; margin-bottom: 2rem; text-align:center; border: 3px solid rgba(0,0,0,.125); background-color: rgba(0,0,0,.125);">
+                    <img src="{{ .Foto }}" class="card-img-top" alt="{{ .Name }}" style="height: 250px;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ .Name }}</h5>
+                    <h5 class="card-title">{{ .LastName }}</h5>
+                    <h5 class="card-title">{{ .Number }}</h5>
+                    <a href="/show?id={{ .UUID }}" class="btn btn-primary">View</a>
+                    <a href="/edit?id={{ .UUID }}" class="btn btn-secondary">Edit</a>
+                    <a href="/delete?id={{ .UUID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+
+        {{ end }} 
+
+    </div>
+  </div>
+    
+  {{ template "Footer" }}
+{{ end }}
